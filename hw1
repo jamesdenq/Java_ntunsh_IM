@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class CompoundInterestCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Principal: ");
+        double principal = scanner.nextDouble();
+
+        double annualRate = 0.05;
+
+        System.out.print("Years: ");
+        int years = scanner.nextInt();
+
+        
+        int compoundingsPerYear = 1;
+
+        double amount = calculateCompoundInterest(principal, annualRate, years, compoundingsPerYear);
+
+        System.out.println("Future Value: " + amount);
+
+        scanner.close();
+    }
+
+    private static double calculateCompoundInterest(double principal, double annualRate, int years, int compoundingsPerYear) {
+        double compoundRate = annualRate / compoundingsPerYear;
+        int compoundings = compoundingsPerYear * years;
+
+        return principal * Math.pow(1 + compoundRate, compoundings);
+    }
+}
